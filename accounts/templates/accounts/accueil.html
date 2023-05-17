@@ -1,0 +1,111 @@
+{% extends 'accounts/main.html' %}
+{% block title %}home{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row mb-5">
+        
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Produits
+                </div>
+                <div class="card-body">
+                    <p>{{totalproduits}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Client
+                </div>
+                <div class="card-body">
+                    <p>{{totalclients}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Commandes
+                </div>
+                <div class="card-body">
+                    <p>{{totalcommandes}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <a class="btn btn-primary" href="" >client</a> 
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr class="bg-info">
+                            <th></th>
+                            <th>clients</th>
+                            <th>phone</th>
+                            
+                        </tr>
+                    {% for c in clients %}
+                        <tr>
+                            <td><a href="{% url 'client' c.id %}">Voir profil</a></td>
+                            <td>{{c.nom}}</td>
+                            <td>{{c.phone}}</td>
+                            
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <a class="btn btn-primary" href="" >Nos commandes </a> 
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr class="bg-info">
+                            <th>date</th>
+                            <th>client</th>
+                            <th>statues</th>
+                            <th>update</th>
+                            <th>supprimer</th>
+                            
+                        </tr>
+                    {% for c in commandes %}
+                        <tr>
+                            <td>{{c.date}}</td>
+                            <td>{{c.client}}</td>
+                            <td>{{c.status}}</td>
+                            <td><a href="{% url 'update_commande' c.id %}">update</a></td>
+                            <td><a href="{% url 'delete_commande' c.id %}">supprimer</a></td>
+                            
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+
+   

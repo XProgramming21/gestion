@@ -1,0 +1,96 @@
+{% extends 'accounts/main.html' %}
+
+{% block title %}client{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+
+    <div class="row">
+        
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Client:
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <a href=""> mise a jour </a>
+                    </div>
+                    <div class="row">
+                        <a href="{% url 'create_commande' client.id %}"> ajouter commande </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    creer un client
+                </div>
+                
+                <div class="card-body">
+                    <div class="row">
+                        <ul>Email: {{ client.email }}</ul>
+                    </div>
+                    <div class="row">
+                        <ul>Phone: {{ client.phone }}</ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    TOTAL COMMANDE
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {{ totalcommande }}
+                        <ul></ul>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="card bg-light">
+            <form method="get">
+                {{myfilter.form}}
+                <input type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <table class="table">
+            <tr class="bg-info">
+                <th>date</th>
+                <th>client</th>
+                <th>statues</th>
+                <th>produit</th>
+                
+            </tr>
+        {% for c in commandes %}
+            <tr>
+                <td>{{c.date}}</td>
+                <td>{{c.client}}</td>
+                <td>{{c.status}}</td>
+                <td>{{c.produit}}</td>
+               
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+   

@@ -1,0 +1,15 @@
+{% extends 'accounts/main.html' %}
+
+{% block title %}create_commande{% endblock %}
+
+
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <p> Etes vous sure de supprimer "{{ commande }}"</p>
+    <a href="{% url 'accueil' %}"> Quitter </a>
+    <input type="submit" value="Comfirmer">
+</form>
+
+{% endblock %}

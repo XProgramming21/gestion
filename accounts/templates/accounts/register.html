@@ -1,0 +1,15 @@
+<form action="" method="POST">
+
+    {% csrf_token %}
+    {% for f in form %}
+    {{ f.label }}
+    {{ f }}
+    <br>
+    {% endfor %}
+    <input type="submit" value="Valider">
+    {% for m in messages %}
+    {{ m }}
+    {% endfor %}
+</form>
+
+<p>{{ form.errors }}</p>

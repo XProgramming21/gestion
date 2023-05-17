@@ -1,0 +1,55 @@
+
+{% extends 'accounts/main.html' %}
+
+{% block title %}client{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header-center">
+                    
+                </div>
+                
+                <div class="card-body">
+                    <div class="row mt-5">
+                        <table class="table">
+                            <tr class="bg-info">
+                                <th>date</th>
+                                <th>client</th>
+                                <th>statues</th>
+                                <th>produit</th>
+                                
+                            </tr>
+                        {% for c in commandes %}
+                            <tr>
+                                <td>{{c.date}}</td>
+                                <td>{{c.client}}</td>
+                                <td>{{c.status}}</td>
+                                <td>{{c.produit}}</td>
+                               
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+
+   

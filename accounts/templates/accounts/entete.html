@@ -1,0 +1,37 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% load static %}
+
+<div class="container-fluid">
+
+    <ul class="nav bg-info">
+
+        <li class="nav-item">
+            <img src="{% static 'images/iai.jpg' %}" width="50" height="50" alt="">
+        </li>
+
+        {% if resquest.user.is_staff %}
+        <li class="nav-item">
+            <a class="nav-link link-light" href="{% url 'accueil' %}">Accueil</a>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link link-light" href="{% url 'produit' %}">produit</a>
+        </li>
+        {% endif %}
+
+        <span class="nav-link ml-3">{{request.user}}
+            <a href="{% url 'deconnexion' %}"> deconnexion</a>
+        </span>
+
+        <div class="col-md-9">
+            <span><img height="50px" width="50px" src="{{request.user.client.photo_profil.url}}" alt="" srcset=""></span>
+        </div>
+
+    </ul>
+
+    
+</div>
