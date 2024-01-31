@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap5',
+    'storages',
     
 
     'accounts',
@@ -82,10 +83,22 @@ WSGI_APPLICATION = 'gestion.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
+        
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'demo_1',
+#         'USER': 'xprogramming',
+#         'PASSWORD': '12345678',
+#         'HOST': 'database-1.c3bhkykqzuon.eu-north-1.rds.amazonaws.com',
+#         'PORT': '5432'
+#     }
+# }
 
 
 # Password validation
@@ -138,6 +151,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'accounts/fichier/images')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AWS_ACCESS_KEY_ID = 'AKIASFGAI65WGLWEUS6H'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'gestion-bucket'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.s3Boto3Storage'
 
 
 

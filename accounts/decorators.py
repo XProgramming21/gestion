@@ -1,14 +1,16 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect
 
+
 def unauthenticated_user(view_func):
     def wrapper_func(request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect('accueil')
+            return redirect("accueil")
         else:
-            return view_func(request,*args, **kwargs)
-        
+            return view_func(request, *args, **kwargs)
+
     return wrapper_func
+
 
 def allowed_users(allowed_roles=[]):
     def decorator(view_func):
@@ -20,17 +22,21 @@ def allowed_users(allowed_roles=[]):
             if group in allowed_roles:
                 return view_func(request, *args, **kwargs)
             else:
-                return HttpResponse('non autorise')
+                return HttpResponse("non autorise")
+
         return wrapper_func
+
     return decorator
+
+
 def admin_only(view_func):
     def wrapper_func(request, *args, **kwargs):
         group = None
         if request.user.groups.exists():
             group = request.user.groups.all()[0].name
-        if group == 'client':
-            return redirect('user_page')
-        if group == 'admin':
+        if group == "client":
+            return redirect("user_page")
+        if group == "admin":
             return view_func(request, *args, **kwargs)
-       
+
     return wrapper_func
